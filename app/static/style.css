@@ -1,0 +1,125 @@
+main {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  align-items: center;
+  text-align: center;
+}
+form {
+  margin-top: 1rem;
+}
+
+h1,
+h2 {
+  padding-top: 10px;
+}
+
+h3 {
+  padding-top: 30px;
+}
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  text-align: right;
+  font-size: 10px;
+  font-weigth: "w500";
+}
+
+img {
+  width: 80px;
+  heigyh: 80px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+input[type="file"] {
+  background-color: #4bbf99;
+  color: white;
+  border: none;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure popup appears above other content */
+}
+
+.popup-content {
+  background: #fada7a;
+  font-family: "Roboto";
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 400px; /* Set a fixed width for the popup */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  width: 30%;
+  border: 1px solid #1779ba;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.menu-toggle button {
+  flex: 1; /* Each button takes 50% width */
+  background: transparent;
+  color: #1779ba;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu-toggle button.active {
+  background: #1779ba; /* Active button color */
+  color: #fefefe;
+}
+
+.menu-toggle button:not(.active) {
+  background: transparent;
+  color: #1779ba;
+}
+
+.menu-toggle button + button {
+  border-left: 1px solid #1779ba;
+}
