@@ -28,6 +28,17 @@
         >
             Convert to WEBP
         </button>
+            <button
+            type="button"
+            class="button-video_convert"
+            hx-post="/toggle"
+            hx-trigger="click"
+            hx-vals='{"mode": "video-convert"}'
+            hx-target="#dialog-container"
+            hx-swap="innerHTML"
+        >
+            Convert Video
+        </button>
         <button
             type="button"
             class="button-favicon"
@@ -37,9 +48,7 @@
             hx-swap="none"
         >
             Convert a FAVICON
-        </button>
-        <!-- <button class="button-convert" onclick="toggleActive(this, 'convert')">Convert Image</button>
-        <button class="button-favicon" onclick="toggleActive(this, 'favicon')">Create a FavIcon</button> -->
+        </button> 
     </div>
     <form method="POST" action="/upload" enctype="multipart/form-data">
         <label>
@@ -59,32 +68,14 @@
         <p>Your mac os icon has been saved</p>
         <p>Folder: {{ output_folder }}</p>
         <button onclick="document.getElementById('popup').style.display='none'">Close</button>
-    </div>
-    
+    </div>    
 </div>
-{% endif %}
-<!-- <script>
-    let toggleValue = false;
-    document.querySelector(".menu-toggle").addEventListener("click", () => {
-        toggleValue = !toggleValue; // Toggle state
-        console.log("Toggle Value:", toggleValue);
-        fetch("/toggle", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ toggle: document.querySelector(".menu-toggle").classList})
-        })
-        .then(response => response.json())
-        .then(data => console.log("Response:", data));
-    });
-</script> -->
-<!-- <script>
-    function toggleActive(clickedButton, type) {
-      const buttons = document.querySelectorAll('.menu-toggle button');
-      buttons.forEach(button => button.classList.remove('active'));
-      clickedButton.classList.add(`active-${type}`);
-      // You can use the 'type' parameter to handle specific logic for each button
-      console.log("Selected Type:", type);
-    }
-  </script> -->
+ {% endif %}
+ <div id="dialog-container">
+ {% if video_dialog %}
+ {% include 'dialog.html' %} 
+ {% endif %}
+ </div>
+ <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </body>
 </html>

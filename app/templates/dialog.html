@@ -1,0 +1,49 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+  />
+</head>
+<div id="dialog-video">
+<div class="video-popup_left-container">
+    <h1>Convert Video</h1>
+    <h3>Choose an option:</h3>
+    <div class="video-webpm_container">
+    </div>
+</div>
+<div class="video-popup_right-container">
+     <button
+     class="video-popup_webm-option"
+        hx-post="/toggle"
+        hx-vals='{"mode": "video-convert-webm"}'
+        hx-target="#dialog-container"
+        hx-swap="innerHTML"
+      >
+      <p>
+        Better compression and quality.
+      </p>
+        <h2>WebM Convert</h2>
+      </button>
+    <button
+      class="video-popup_h264-option"
+        hx-post="/toggle"
+        hx-vals='{"mode": "video-convert-h264"}'
+        hx-target="#dialog-container"
+        hx-swap="innerHTML"
+      >
+      <p>
+        Video Size &lt; 10MB 
+      </p>
+      <p>
+        Perfect for hero sections, backgrounds, short clips
+      </p>
+      <h2>H.264 Convert</h2>
+    </button>
+    </div>
+    <button class="dialog-video_close" onclick="document.getElementById('dialog-video').remove()">
+        Close
+    </button>
+</div>
+
+</div>

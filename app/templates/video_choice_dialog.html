@@ -1,0 +1,7 @@
+<div id="video-dialog" style="background:#fff; border:1px solid #ccc; padding:2em; max-width:400px; margin:2em auto;">
+    <h2>MP4 Detected: {{ filename }}</h2>
+    <p>Do you want to convert this video to WebM or optimize as H.264?</p>
+    <button hx-post="/convert-to-webm" hx-vals='{"filename": "{{ filename }}"}' hx-target="#dialog-container" hx-swap="innerHTML">Convert to WebM</button>
+    <button hx-post="/optimize-h264" hx-vals='{"filename": "{{ filename }}"}' hx-target="#dialog-container" hx-swap="innerHTML">Optimize H.264</button>
+    <button onclick="document.getElementById('video-dialog').remove()">Cancel</button>
+</div>
