@@ -16,6 +16,18 @@ Image.MAX_IMAGE_PIXELS = None  # or use a specific value like 500000000
 def png_to_webp(file: Union[str, FileStorage, io.BytesIO], fileName: Optional[str] = None) -> int:
     try:
         with Image.open(file) as img:  # type: ignore
+            if img.format == 'JPEG':
+                print("Warning: The provided file is not a PNG image. Proceeding with conversion from JPEG to WebP.")
+                # Convert to PNG from JPEG
+                if img.mode in ("RGBA", "LA") or "transparency" in img.info:
+                    background = Image.new("RGB", img.size, "white")
+                    if img.mode != "RGBA":
+                        img = img.convert("RGBA")
+                    background.paste(img, mask=img.getchannel("A"))
+                    img = background
+                else:
+                    img = img.convert("RGB")
+
             # WebP has a max dimension limit of 16383 pixels
             MAX_WEBP_DIMENSION = 16383
             width, height = img.size
@@ -30,6 +42,7 @@ def png_to_webp(file: Union[str, FileStorage, io.BytesIO], fileName: Optional[st
                 print(f"Image resized from {width}x{height} to {new_width}x{new_height} to fit WebP limits")
             
             if fileName:
+                print(f"fileName provided: {fileName}")
                 original_filename = os.path.splitext(fileName)[0]
             elif isinstance(file, FileStorage) and file.filename:
                 original_filename = os.path.splitext(file.filename)[0]

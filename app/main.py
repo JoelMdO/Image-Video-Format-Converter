@@ -69,6 +69,9 @@ def upload_file():
             if file_extension(file.filename) == 'png':
                 print("file to change to png")
                 response = png_to_webp (file)
+            if file_extension(file.filename) == 'jpeg':
+                print("file to change from jpeg to webp")
+                response = png_to_webp (file)
             # elif file_extension(file.filename) == 'mp4':
             #     print("file to change to mp4")
             #     response = video_to_webm (file)
